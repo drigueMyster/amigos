@@ -1,18 +1,22 @@
 package com.amigos.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
-@Entity
-@Table(name = "person")
+
 public class Person {
 
     private UUID id;
+
+    @NotBlank
     private String name;
 
-    public Person(UUID id, String name) {
+    public Person(@JsonProperty("id") UUID id, @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
     }
